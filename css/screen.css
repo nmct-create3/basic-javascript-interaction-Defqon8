@@ -814,6 +814,69 @@ more padding on the right to avoid overlap
 	Custom checkboxes & radio buttons
 */
 
+.c-range {
+    display: block;
+    height: 8px;
+    padding: 0;
+    border-radius: 8px;
+    background-color: var(--color-neutral-xxxx-light);
+    border: 1px solid var(--color-neutral-xxx-light);
+}
+
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 8px;
+    background: var(--color-alpha);
+}
+
+::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 8px;
+    background: var(--color-alpha);
+}
+
+.c-range-holder {
+    width: calc( 100% - 18px)
+}
+
+.c-range-holder::after {
+    content: attr(data-value);
+    display: inline-block;
+    width: 32px;
+    margin-top: 12px;
+    padding: 4px;
+    font-size: .8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: var( --color-neutral-xxxx-light);
+    transform: scale(0);
+    transition: transform 200ms ease-in-out;
+    transform-origin: center top;
+}
+
+.c-range:focus+.c-range-holder::after {
+    transform: scale(1);
+}
+
+.c-dropdown-menu {
+    position: relative;
+    display: block;
+}
+
+.c-dropdown-menu--button {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+}
+
+.c-dropdown-menu--symbol {}
+
 /*
     Component: Custom Toggle
     ---
@@ -943,17 +1006,25 @@ more padding on the right to avoid overlap
     Custom select dropdown
 */
 
-.c-custom-select {
-    display: block;
-    position: relative;
+.c-button-dropdown {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: var(--radius);
+    border: grey;
+    background-color: white;
+    color: black;
+    padding: 11px 16px;
+    line-height: 24px;
+    outline: none;
+    transition: all var(--transition-alpha);
 }
 
-.c-custom-select__symbol {
+.c-button-symbol {
     width: 24px;
     height: 24px;
-    position: absolute;
-    top: 12px;
-    right: 12px;
+    position: relative;
+    top: 7px;
+    left: 10px;
     pointer-events: none;
     fill: var(--color-neutral-x-light);
 }
@@ -964,11 +1035,69 @@ Component: Password Toggle
 Password toggle custom checkbox
 */
 
+.c-password--label {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    padding-bottom: 0;
+}
+
+.c-password__symbol {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 35px;
+    right: 12px;
+    pointer-events: none;
+    fill: var(--color-neutral-x-light);
+}
+
+.c-password__symbol-unchecked {
+    display: none;
+}
+
+.c-password:checked+.c-password--label .c-password__symbol-checked {
+    display: none;
+}
+
+.c-password:checked+.c-password--label .c-password__symbol-unchecked {
+    display: block;
+}
+
 /*
 	Component: Custom Like
 	---
 	Custom like button
 */
+
+.c-like__input {}
+
+.c-like__label {
+    margin-bottom: 0;
+    padding-bottom: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-neutral-x-dark);
+    position: absolute;
+    bottom: -6px;
+    left: 18px;
+    padding: 4px 8px;
+    will-change: transform;
+    transform: translateY( 0);
+    transition: transform 200ms ease-in-out;
+    box-shadow: 0 0 4px 4px rgba(255, 255, 255, 0.8);
+    background: white;
+}
+
+.c-custom-select__symbol:active {
+    transform: scale(0.50);
+    -webkit-animation: bounce 1200ms ease-in;
+    -moz-animation: bounce 1200ms ease-in;
+    -o-animation: bounce 1200ms ease-in;
+    animation: bounce 1200ms ease-in;
+}
 
 /*------------------------------------*\
 #UTILITIES
